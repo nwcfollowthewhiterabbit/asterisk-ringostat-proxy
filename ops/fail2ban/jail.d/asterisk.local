@@ -1,0 +1,9 @@
+[asterisk]
+enabled = true
+port = 5060,5061
+protocol = udp
+filter = asterisk
+logpath = /var/log/asterisk/messages
+maxretry = 6
+findtime = 10m
+bantime = 1h

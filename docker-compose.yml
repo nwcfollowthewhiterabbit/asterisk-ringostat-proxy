@@ -1,0 +1,24 @@
+services:
+  asterisk:
+    build:
+      context: .
+      args:
+        ASTERISK_VERSION: ${ASTERISK_VERSION:-22.9.0}
+    container_name: asterisk-proxy
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      TZ: ${TZ:-UTC}
+    volumes:
+      - ./templates:/opt/asterisk/templates:ro
+      - ./docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh:ro
+      - ./data/log:/var/log/asterisk
+      - ./data/spool:/var/spool/asterisk
+    entrypoint: ["/usr/local/bin/docker-entrypoint.sh"]
+    command: ["/usr/sbin/asterisk", "-f", "-U", "asterisk", "-G", "asterisk", "-vvv"]
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
