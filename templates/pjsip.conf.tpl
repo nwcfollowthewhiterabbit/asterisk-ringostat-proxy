@@ -21,6 +21,7 @@ transport=transport-udp
 outbound_auth=operator_auth
 server_uri=sip:${OPERATOR_HOST}:${OPERATOR_PORT}
 client_uri=sip:${OPERATOR_USERNAME}@${OPERATOR_HOST}
+outbound_proxy=${OPERATOR_OUTBOUND_PROXY}
 retry_interval=60
 forbidden_retry_interval=600
 expiration=300
@@ -45,6 +46,7 @@ disallow=all
 allow=alaw,ulaw
 outbound_auth=operator_auth
 aors=operator_aor
+outbound_proxy=${OPERATOR_OUTBOUND_PROXY}
 from_user=${OPERATOR_USERNAME}
 from_domain=${OPERATOR_FROM_DOMAIN}
 contact_user=${OPERATOR_USERNAME}
@@ -85,8 +87,3 @@ direct_media=no
 rewrite_contact=yes
 rtp_symmetric=yes
 force_rport=yes
-
-[myserver-identify]
-type=identify
-endpoint=myserver
-match=${RINGOSTAT_MATCH_IPS}

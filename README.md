@@ -44,7 +44,6 @@ cp .env.example .env
 - operator credentials and IPs
 - `OPERATOR_CALLERID` if your operator requires a fixed caller ID on outbound calls
 - Ringostat credentials and IPs
-- optional `RINGOSTAT_INBOUND_TARGET`
 
 3. Start:
 
@@ -66,8 +65,9 @@ docker exec -it asterisk-proxy asterisk -rx "pjsip show contacts"
 
 Context: `from-operator`
 
-- If `RINGOSTAT_INBOUND_TARGET` is empty, Asterisk forwards the originally called number `${EXTEN}` to the Ringostat side.
-- If `RINGOSTAT_INBOUND_TARGET` is set, Asterisk always forwards calls there.
+- Inbound calls are sent to the Ringostat endpoint with `Dial(PJSIP/myserver,60)`.
+- The called DID is not passed as `${EXTEN}` to Ringostat in the initial setup.
+- Ringostat should bind calls for this SIP login to the configured phone number on its side.
 
 ### Outbound calls from Ringostat
 
