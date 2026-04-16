@@ -40,7 +40,6 @@ RUN wget -O asterisk.tar.gz "https://downloads.asterisk.org/pub/telephony/asteri
     && make -j"$(nproc)" \
     && make install \
     && make samples \
-    && make config \
     && ldconfig \
     && cd /usr/src \
     && rm -rf "asterisk-${ASTERISK_VERSION}" asterisk.tar.gz
@@ -48,4 +47,3 @@ RUN wget -O asterisk.tar.gz "https://downloads.asterisk.org/pub/telephony/asteri
 RUN rm -f /etc/asterisk/*.conf
 
 EXPOSE 5060/udp 10000-20000/udp
-
