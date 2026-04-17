@@ -19,7 +19,7 @@ external_signaling_address=${PUBLIC_IP}
 type=registration
 transport=transport-udp
 outbound_auth=operator_auth
-server_uri=sip:${OPERATOR_HOST}:${OPERATOR_PORT}
+server_uri=sip:${OPERATOR_REGISTRAR_HOST}:${OPERATOR_PORT}
 client_uri=sip:${OPERATOR_USERNAME}@${OPERATOR_HOST}
 outbound_proxy=${OPERATOR_OUTBOUND_PROXY}
 retry_interval=60
@@ -35,7 +35,7 @@ username=${OPERATOR_USERNAME}
 
 [operator_aor]
 type=aor
-contact=sip:${OPERATOR_HOST}:${OPERATOR_PORT}
+contact=sip:${OPERATOR_REGISTRAR_HOST}:${OPERATOR_PORT}
 qualify_frequency=30
 
 [operator]
