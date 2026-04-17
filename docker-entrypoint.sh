@@ -30,6 +30,7 @@ export OPERATOR_OUTBOUND_PROXY="${OPERATOR_OUTBOUND_PROXY:-sip:${OPERATOR_HOST}:
 render_vars='${PUBLIC_IP} ${OPERATOR_HOST} ${OPERATOR_PORT} ${OPERATOR_REGISTRAR_HOST} ${OPERATOR_OUTBOUND_PROXY} ${OPERATOR_USERNAME} ${OPERATOR_PASSWORD} ${OPERATOR_FROM_DOMAIN} ${OPERATOR_MATCH_IPS} ${OPERATOR_CALLERID} ${RINGOSTAT_USERNAME} ${RINGOSTAT_PASSWORD} ${OUTBOUND_STRIP_PREFIX}'
 
 mkdir -p "${config_dir}" /var/log/asterisk /var/spool/asterisk /var/run/asterisk
+find "${config_dir}" -mindepth 1 -maxdepth 1 -type f -delete
 
 for template in \
   asterisk.conf.tpl \
